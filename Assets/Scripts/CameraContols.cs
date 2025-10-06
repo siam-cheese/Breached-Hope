@@ -35,27 +35,27 @@ public class CameraContols : MonoBehaviour
                 camsOpen = true;
                 playerCamera.SetActive(false);
                 physicalCamera = Cameras[activeCameraNum].transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
-                Cameras[activeCameraNum].transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject.SetActive(true);
+                Cameras[activeCameraNum].transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject.SetActive(true);
             }
             else {
                 playerController.enabled=true;
                 camsOpen = false;
                 playerCamera.SetActive(true);
-                Cameras[activeCameraNum].transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject.SetActive(false);
+                Cameras[activeCameraNum].transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject.SetActive(false);
             }
         }
 
         if (camsOpen) {
             
-            float pitch = physicalCamera.transform.localEulerAngles.x;
+            float pitch = physicalCamera.transform.GetChild(0).localEulerAngles.x;
             float yaw = physicalCamera.transform.localEulerAngles.z + Input.GetAxis("Mouse X") * mouseSensitivity * Time.timeScale;
             pitch -= mouseSensitivity * Input.GetAxis("Mouse Y") * Time.timeScale;
-            pitch = Mathf.Clamp(pitch, -maxLookAngle, maxLookAngle);
+            //pitch = Mathf.Clamp(pitch, -maxLookAngle, maxLookAngle);
             //yaw = Mathf.Clamp(yaw, -maxLookAngle, maxLookAngle);
             if(yaw < -maxLookAngle) yaw = -maxLookAngle;
             //else if(yaw > maxLookAngle) yaw = maxLookAngle;
-            physicalCamera.transform.localEulerAngles = new Vector3(0, 0, 0);
             physicalCamera.transform.localEulerAngles = new Vector3(0, 0, yaw);
+            physicalCamera.transform.GetChild(0).localEulerAngles = new Vector3(pitch, 0, 0);
         }
 
     }
