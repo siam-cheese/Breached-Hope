@@ -1,18 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static KeyMaps;
 
 public class CameraContols : MonoBehaviour
 {
-    public KeyCode openKey = KeyCode.O;
+    
     public int activeCameraNum;
     GameObject activeCamera;
 
-    GameObject CameraCanvas;
+    public GameObject CameraCanvas;
 
     public List<GameObject> Cameras;
 
     public GameObject playerCamera;
+
+    public float cameraSensitivity;
 
     public GameObject physicalCamera;
 
@@ -27,7 +30,7 @@ public class CameraContols : MonoBehaviour
     void Start()
     {
         playerController = GetComponent<PlayerController>();
-        CameraCanvas = GameObject.Find("Camera Controller");
+        
     }
 
     // Update is called once per frame
@@ -57,10 +60,16 @@ public class CameraContols : MonoBehaviour
 
         if (camsOpen)
         {
+            float yawMovement = 0, pitchMovement = 0;
+            if (Input.GetKey(left)) yawMovement = -cameraSensitivity;
+            else if (Input.GetKey(right)) yawMovement = cameraSensitivity;
+
+            if (Input.GetKey(up)) pitchMovement = cameraSensitivity;
+            else if (Input.GetKey(down)) pitchMovement = -cameraSensitivity;
 
             float pitch = physicalCamera.transform.GetChild(0).localEulerAngles.x;
-            float yaw = physicalCamera.transform.localEulerAngles.z + Input.GetAxis("Mouse X") * mouseSensitivity * Time.timeScale;
-            pitch -= mouseSensitivity * Input.GetAxis("Mouse Y") * Time.timeScale;
+            float yaw = physicalCamera.transform.localEulerAngles.z + yawMovement * mouseSensitivity * Time.timeScale;
+            pitch -= mouseSensitivity * pitchMovement * Time.timeScale;
             //pitch = Mathf.Clamp(pitch, -maxLookAngle, maxLookAngle);
             //yaw = Mathf.Clamp(yaw, -maxLookAngle, maxLookAngle);
             if (yaw < -maxLookAngle) yaw = -maxLookAngle;
