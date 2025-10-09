@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 2560
     height: 1357
   m_ShowMode: 4
-  m_Title: Scene
+  m_Title: Game
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -116,10 +116,10 @@ MonoBehaviour:
     y: 30
     width: 2560
     height: 1307
-  m_MinSize: {x: 679, y: 492}
-  m_MaxSize: {x: 14002, y: 14042}
+  m_MinSize: {x: 678, y: 492}
+  m_MaxSize: {x: 14001, y: 14042}
   vertical: 0
-  controlID: 434
+  controlID: 103
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_MinSize: {x: 403, y: 492}
   m_MaxSize: {x: 10001, y: 14042}
   vertical: 1
-  controlID: 360
+  controlID: 104
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_MinSize: {x: 403, y: 221}
   m_MaxSize: {x: 8003, y: 4021}
   vertical: 0
-  controlID: 361
+  controlID: 105
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -273,8 +273,8 @@ MonoBehaviour:
     y: 0
     width: 865
     height: 1307
-  m_MinSize: {x: 276, y: 71}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 21}
   m_Panes:
   - {fileID: 21}
@@ -424,23 +424,23 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 4e40ffff
-      m_LastClickedID: -49074
-      m_ExpandedIDs: 6c46ffffb662ffff3666ffff4c6affffdc6dffffba70ffff3078ffff1880ffff3688ffff4291ffff98d1ffff98d3ffffced8ffff6cdaffff42deffffa2deffffcaf9ffffd655000094fa0000cafe000050ff0000d80601000c0701001407010066070100
+      m_SelectedIDs: 08f9ffff
+      m_LastClickedID: -1784
+      m_ExpandedIDs: a21dffffb43bffff0a54ffff0678ffff5c86ffff68acffffaab0ffff84cffffff4f6fffff8f6ffff50f7ffff6ef8ffff76faffff7efaffff82faffff86faffff56fbffffbe740000c6750000d4750000de750000f07500001a760000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: 
-        m_OriginalName: 
+        m_Name: P_Wall_01 (4)
+        m_OriginalName: P_Wall_01 (4)
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 0
+        m_UserData: -2180
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 11
+        m_OriginalEventType: 0
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 8}
       m_SearchString: 
@@ -486,9 +486,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -8.265385, y: 5.858, z: 7.346017}
+    m_Target: {x: -8.185531, y: 8.073144, z: 10.362267}
     speed: 2
-    m_Value: {x: -8.265385, y: 5.858, z: 7.346017}
+    m_Value: {x: -8.185531, y: 8.073144, z: 10.362267}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -535,20 +535,20 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.24924517, y: 0.027597554, z: -0.007097375, w: 0.9680399}
+    m_Target: {x: 0.27782258, y: 0.05617541, z: -0.016240422, w: 0.9589253}
     speed: 2
-    m_Value: {x: 0.24925102, y: 0.02614499, z: -0.0067233774, w: 0.96806264}
+    m_Value: {x: 0.27780277, y: 0.056171406, z: -0.016239263, w: 0.95885694}
   m_Size:
-    m_Target: 7.5596547
+    m_Target: 11.972235
     speed: 2
-    m_Value: 7.5596547
+    m_Value: 11.972235
   m_Ortho:
     m_Target: 0
     speed: 2
     m_Value: 0
   m_CameraSettings:
-    m_Speed: 0.94052994
-    m_SpeedNormalized: 0.46999997
+    m_Speed: 0.76061994
+    m_SpeedNormalized: 0.37999997
     m_SpeedMin: 0.001
     m_SpeedMax: 2
     m_EasingEnabled: 1
@@ -604,22 +604,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Dnk_Dev/HospitalHorrorPack/Models
+    - Assets/Materials
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Dnk_Dev/HospitalHorrorPack/Models
+  - Assets/Materials
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\203393964\Breached Hope
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 31}
-    m_SelectedIDs: 2e640000
-    m_LastClickedID: 25646
-    m_ExpandedIDs: 00000000f05b0000fc5b00000a5c0000266400002a6400002e640000d86d0000f26d0000f46d0000
+    m_SelectedIDs: ac7a0000
+    m_LastClickedID: 31404
+    m_ExpandedIDs: 000000002c790000a67a0000a87a0000aa7a0000ac7a0000ca7a0000cc7a0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -647,7 +647,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000f05b0000
+    m_ExpandedIDs: 000000002c790000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
