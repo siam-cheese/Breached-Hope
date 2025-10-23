@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI; // Required for UI element
 using static KeyMaps;
 
 public class CameraContols : MonoBehaviour
@@ -12,6 +13,8 @@ public class CameraContols : MonoBehaviour
     public GameObject CameraCanvas;
 
     public List<GameObject> Cameras;
+
+    public List<GameObject> ButtonCams;
 
     public GameObject playerCamera;
 
@@ -26,11 +29,14 @@ public class CameraContols : MonoBehaviour
     public int maxLookAngle = 90;
 
     bool camsOpen = false;
+
+    public Color offColor = Color.red;
+    public Color onColor = Color.green;
     // Start is called before the first frame update
     void Start()
     {
         playerController = GetComponent<PlayerController>();
-        
+        resetButtonColors();
     }
 
     // Update is called once per frame
@@ -94,5 +100,17 @@ public class CameraContols : MonoBehaviour
         physicalCamera = Cameras[activeCameraNum].transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
         activeCamera = physicalCamera.transform.GetChild(0).GetChild(0).gameObject;
         activeCamera.SetActive(true);
+
+        resetButtonColors();
+    }
+
+    public void resetButtonColors()
+    {
+        for (int i = 0; i < ButtonCams.Count; i++)
+        {
+            ButtonCams[i].GetComponent<Image>().color = offColor;
+        }
+
+        ButtonCams[activeCameraNum].GetComponent<Image>().color = onColor;
     }
 }
