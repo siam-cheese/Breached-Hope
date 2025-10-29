@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1544939776223601892}
+  - component: {fileID: 3972635836093667921}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -32,6 +33,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3972635836093667921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2178451556668391006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40ec026fad54dab4d8c0e6c870c21826, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  connectedDoors: []
+  CentralDoorObject: {fileID: 0}
 --- !u!1 &2739380593542941231
 GameObject:
   m_ObjectHideFlags: 0
@@ -365,8 +380,8 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 0.28826985, g: 0.7735849, b: 0.3020052, a: 1}
-  m_Intensity: 2.2
-  m_Range: 21.54
+  m_Intensity: 2.34
+  m_Range: 89.51
   m_SpotAngle: 81.4
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10

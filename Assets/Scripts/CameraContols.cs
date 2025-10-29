@@ -32,16 +32,29 @@ public class CameraContols : MonoBehaviour
 
     public Color offColor = Color.red;
     public Color onColor = Color.green;
+
+    CentralDoorController doorScript;
+    public GameObject CentralDoorObject;
+
+    bool firstFrame = true;
+
     // Start is called before the first frame update
     void Start()
     {
         playerController = GetComponent<PlayerController>();
         resetButtonColors();
+        CentralDoorObject = GameObject.Find("Door Controller");
+        doorScript = CentralDoorObject.GetComponent<CentralDoorController>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (firstFrame)
+        {
+            FirstFrame();
+        }
         if (Input.GetKeyDown(openKey))
         {
             if (!camsOpen)
@@ -53,9 +66,11 @@ public class CameraContols : MonoBehaviour
                 activeCamera = physicalCamera.transform.GetChild(0).GetChild(0).gameObject;
                 activeCamera.SetActive(true);
                 CameraCanvas.SetActive(true);
+                Cameras[activeCameraNum].GetComponent<ActivateCamButtons>().activateDoorButtons();
             }
             else
             {
+                doorScript.hideAllCubes();
                 playerController.enabled = true;
                 camsOpen = false;
                 playerCamera.SetActive(true);
@@ -97,6 +112,8 @@ public class CameraContols : MonoBehaviour
                 i = Cameras.Count;
             }
         }
+        doorScript.hideAllCubes();
+        Cameras[activeCameraNum].GetComponent<ActivateCamButtons>().activateDoorButtons();
         physicalCamera = Cameras[activeCameraNum].transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
         activeCamera = physicalCamera.transform.GetChild(0).GetChild(0).gameObject;
         activeCamera.SetActive(true);
@@ -112,5 +129,11 @@ public class CameraContols : MonoBehaviour
         }
 
         ButtonCams[activeCameraNum].GetComponent<Image>().color = onColor;
+    }
+
+    void FirstFrame()
+    {
+        firstFrame = false;
+        doorScript.hideAllCubes();
     }
 }
