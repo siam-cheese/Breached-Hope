@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI; // Required for UI element
+using UnityEngine.UI;
+using UnityEngine.Video; // Required for UI element
 using static KeyMaps;
 
 public class CameraContols : MonoBehaviour
@@ -36,6 +37,8 @@ public class CameraContols : MonoBehaviour
     CentralDoorController doorScript;
     public GameObject CentralDoorObject;
 
+    public GameObject Static;
+
     bool firstFrame = true;
 
     // Start is called before the first frame update
@@ -45,7 +48,6 @@ public class CameraContols : MonoBehaviour
         resetButtonColors();
         CentralDoorObject = GameObject.Find("Door Controller");
         doorScript = CentralDoorObject.GetComponent<CentralDoorController>();
-
     }
 
     // Update is called once per frame
@@ -62,11 +64,14 @@ public class CameraContols : MonoBehaviour
                 playerController.enabled = false;
                 camsOpen = true;
                 playerCamera.SetActive(false);
+                CameraCanvas.SetActive(true);
                 physicalCamera = Cameras[activeCameraNum].transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
                 activeCamera = physicalCamera.transform.GetChild(0).GetChild(0).gameObject;
                 activeCamera.SetActive(true);
-                CameraCanvas.SetActive(true);
+
                 Cameras[activeCameraNum].GetComponent<ActivateCamButtons>().activateDoorButtons();
+
+                switchCam(Cameras[activeCameraNum]);
             }
             else
             {
@@ -117,7 +122,8 @@ public class CameraContols : MonoBehaviour
         physicalCamera = Cameras[activeCameraNum].transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
         activeCamera = physicalCamera.transform.GetChild(0).GetChild(0).gameObject;
         activeCamera.SetActive(true);
-
+        //Static.GetComponent<VideoPlayer>().camera = activeCamera;
+        //Static.GetComponent<VideoPlayer>().Play();
         resetButtonColors();
     }
 

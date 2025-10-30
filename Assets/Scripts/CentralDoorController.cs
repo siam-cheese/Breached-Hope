@@ -7,6 +7,8 @@ public class CentralDoorController : MonoBehaviour
 {
     public List<GameObject> doors;
 
+    bool firstFrame = true;
+
     // Start is called before the first frame update
     void Start()
     {
