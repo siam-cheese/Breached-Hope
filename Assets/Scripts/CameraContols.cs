@@ -117,6 +117,8 @@ public class CameraContols : MonoBehaviour
                 i = Cameras.Count;
             }
         }
+
+        Static.GetComponent<Animator>().SetTrigger("playStatic");
         doorScript.hideAllCubes();
         Cameras[activeCameraNum].GetComponent<ActivateCamButtons>().activateDoorButtons();
         physicalCamera = Cameras[activeCameraNum].transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
