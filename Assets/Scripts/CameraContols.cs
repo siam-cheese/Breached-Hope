@@ -84,6 +84,10 @@ public class CameraContols : MonoBehaviour
             }
         }
 
+    }
+
+    void FixedUpdate()
+    {
         if (camsOpen)
         {
             float yawMovement = 0, pitchMovement = 0;
@@ -103,7 +107,6 @@ public class CameraContols : MonoBehaviour
             physicalCamera.transform.localEulerAngles = new Vector3(0, 0, yaw);
             physicalCamera.transform.GetChild(0).localEulerAngles = new Vector3(pitch, 0, 0);
         }
-
     }
 
     public void switchCam(GameObject cam)
