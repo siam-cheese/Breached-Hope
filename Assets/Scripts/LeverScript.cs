@@ -39,8 +39,8 @@ public class LeverScript : MonoBehaviour
                     TargetObj[i].SetActive(true);
                 if (TargetObj[i].tag == "Door")
                     TargetObj[i].GetComponent<leverLink>().leverTrigger();
-                if (TargetObj[i].tag == "Enemy")
-                    TargetObj[i].GetComponent<EnemyController>().targPlayer();
+            if (TargetObj[i].tag == "Enemy")
+                ;
                 
             }
     }
