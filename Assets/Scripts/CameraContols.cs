@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.Video; // Required for UI element
 using static KeyMaps;
 
 public class CameraContols : MonoBehaviour
@@ -12,6 +14,8 @@ public class CameraContols : MonoBehaviour
     public GameObject CameraCanvas;
 
     public List<GameObject> Cameras;
+
+    public List<GameObject> ButtonCams;
 
     public GameObject playerCamera;
 
@@ -26,16 +30,33 @@ public class CameraContols : MonoBehaviour
     public int maxLookAngle = 90;
 
     bool camsOpen = false;
+
+    public Color offColor = Color.red;
+    public Color onColor = Color.green;
+
+    CentralDoorController doorScript;
+    public GameObject CentralDoorObject;
+
+    public GameObject Static;
+
+    bool firstFrame = true;
+
     // Start is called before the first frame update
     void Start()
     {
         playerController = GetComponent<PlayerController>();
-        
+        resetButtonColors();
+        CentralDoorObject = GameObject.Find("Door Controller");
+        doorScript = CentralDoorObject.GetComponent<CentralDoorController>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (firstFrame)
+        {
+            FirstFrame();
+        }
         if (Input.GetKeyDown(openKey))
         {
             if (!camsOpen)
@@ -43,21 +64,31 @@ public class CameraContols : MonoBehaviour
                 playerController.enabled = false;
                 camsOpen = true;
                 playerCamera.SetActive(false);
+                CameraCanvas.SetActive(true);
                 physicalCamera = Cameras[activeCameraNum].transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
                 activeCamera = physicalCamera.transform.GetChild(0).GetChild(0).gameObject;
                 activeCamera.SetActive(true);
-                CameraCanvas.SetActive(true);
+
+                Cameras[activeCameraNum].GetComponent<ActivateCamButtons>().activateDoorButtons();
+
+                switchCam(Cameras[activeCameraNum]);
             }
             else
             {
+                doorScript.hideAllCubes();
                 playerController.enabled = true;
                 camsOpen = false;
                 playerCamera.SetActive(true);
                 activeCamera.SetActive(false);
                 CameraCanvas.SetActive(false);
+                Cameras[activeCameraNum].transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).GetChild(1).gameObject.SetActive(false);
             }
         }
 
+    }
+
+    void FixedUpdate()
+    {
         if (camsOpen)
         {
             float yawMovement = 0, pitchMovement = 0;
@@ -77,11 +108,11 @@ public class CameraContols : MonoBehaviour
             physicalCamera.transform.localEulerAngles = new Vector3(0, 0, yaw);
             physicalCamera.transform.GetChild(0).localEulerAngles = new Vector3(pitch, 0, 0);
         }
-
     }
 
     public void switchCam(GameObject cam)
     {
+        Cameras[activeCameraNum].transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).GetChild(1).gameObject.SetActive(false);
         activeCamera.SetActive(false);
         for (int i = 0; i < Cameras.Count; i++)
         {
@@ -91,8 +122,33 @@ public class CameraContols : MonoBehaviour
                 i = Cameras.Count;
             }
         }
+
+        Static.GetComponent<Animator>().SetTrigger("playStatic");
+        doorScript.hideAllCubes();
+        Cameras[activeCameraNum].GetComponent<ActivateCamButtons>().activateDoorButtons();
         physicalCamera = Cameras[activeCameraNum].transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
         activeCamera = physicalCamera.transform.GetChild(0).GetChild(0).gameObject;
         activeCamera.SetActive(true);
+        Cameras[activeCameraNum].transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).GetChild(1).gameObject.SetActive(true);
+        //Static.GetComponent<VideoPlayer>().camera = activeCamera;
+        //Static.GetComponent<VideoPlayer>().Play();
+        resetButtonColors();
+        
+    }
+
+    public void resetButtonColors()
+    {
+        for (int i = 0; i < ButtonCams.Count; i++)
+        {
+            ButtonCams[i].GetComponent<Image>().color = offColor;
+        }
+
+        ButtonCams[activeCameraNum].GetComponent<Image>().color = onColor;
+    }
+
+    void FirstFrame()
+    {
+        firstFrame = false;
+        doorScript.hideAllCubes();
     }
 }
