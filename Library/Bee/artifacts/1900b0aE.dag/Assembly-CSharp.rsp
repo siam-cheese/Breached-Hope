@@ -341,6 +341,7 @@
 "Assets/doorAudioScript.cs"
 "Assets/EnemyController.cs"
 "Assets/ModularFirstPersonController/FirstPersonController/FirstPersonController.cs"
+"Assets/PointSystem.cs"
 "Assets/PSXShaderKit/Demo/PSXExample_CameraMovement.cs"
 "Assets/PSXShaderKit/Demo/SpookyOrbFloat.cs"
 "Assets/PSXShaderKit/Scripts/PSXPostProcessEffect.cs"

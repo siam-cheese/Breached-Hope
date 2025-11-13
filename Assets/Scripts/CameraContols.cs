@@ -81,6 +81,7 @@ public class CameraContols : MonoBehaviour
                 playerCamera.SetActive(true);
                 activeCamera.SetActive(false);
                 CameraCanvas.SetActive(false);
+                Cameras[activeCameraNum].transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).GetChild(1).gameObject.SetActive(false);
             }
         }
 
@@ -111,6 +112,7 @@ public class CameraContols : MonoBehaviour
 
     public void switchCam(GameObject cam)
     {
+        Cameras[activeCameraNum].transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).GetChild(1).gameObject.SetActive(false);
         activeCamera.SetActive(false);
         for (int i = 0; i < Cameras.Count; i++)
         {
@@ -127,9 +129,11 @@ public class CameraContols : MonoBehaviour
         physicalCamera = Cameras[activeCameraNum].transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
         activeCamera = physicalCamera.transform.GetChild(0).GetChild(0).gameObject;
         activeCamera.SetActive(true);
+        Cameras[activeCameraNum].transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).GetChild(1).gameObject.SetActive(true);
         //Static.GetComponent<VideoPlayer>().camera = activeCamera;
         //Static.GetComponent<VideoPlayer>().Play();
         resetButtonColors();
+        
     }
 
     public void resetButtonColors()

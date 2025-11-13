@@ -24,9 +24,9 @@ public class EnemyController : MonoBehaviour
     {
         while (true) // This creates an infinite loop
         {
-            Debug.Log("Tick! Time: " + Time.time); // Your code to execute every second
-            yield return new WaitForSeconds(1f); // Wait for 1 second
-            Monster.GetComponent<UnityEngine.AI.NavMeshAgent>().destination = Player.transform.position;
+            Vector3 playerPos = Player.transform.position;
+            yield return new WaitForSeconds(20f); // Wait for 1 second
+            Monster.GetComponent<UnityEngine.AI.NavMeshAgent>().destination = playerPos;
         }
     }
 }
