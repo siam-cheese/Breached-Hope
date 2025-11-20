@@ -347,7 +347,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 103
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -470,7 +470,7 @@ Light:
   m_Color: {r: 0.28826985, g: 0.7735849, b: 0.3020052, a: 1}
   m_Intensity: 2.34
   m_Range: 89.51
-  m_SpotAngle: 81.4
+  m_SpotAngle: 131.1
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:

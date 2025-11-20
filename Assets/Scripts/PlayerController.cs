@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour
 
     public List<AudioClip> Footsteps;
 
-    private bool frozen = false;
+    public bool frozen = false;
 
     private Quaternion FLQuat; //flashlight vector
     

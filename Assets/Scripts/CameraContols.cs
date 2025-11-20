@@ -12,6 +12,7 @@ public class CameraContols : MonoBehaviour
     GameObject activeCamera;
 
     public GameObject CameraCanvas;
+    public GameObject Enemy;
 
     public List<GameObject> Cameras;
 
@@ -36,6 +37,9 @@ public class CameraContols : MonoBehaviour
 
     CentralDoorController doorScript;
     public GameObject CentralDoorObject;
+
+    public float camEnemySpeed;
+    public float camChaseSpeed;
 
     public GameObject Static;
 
@@ -68,7 +72,8 @@ public class CameraContols : MonoBehaviour
                 physicalCamera = Cameras[activeCameraNum].transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
                 activeCamera = physicalCamera.transform.GetChild(0).GetChild(0).gameObject;
                 activeCamera.SetActive(true);
-
+                Enemy.GetComponent<EnemyController>().speedFinal = camEnemySpeed;
+                Enemy.GetComponent<EnemyController>().chaseSpeedFinal = camChaseSpeed;
                 Cameras[activeCameraNum].GetComponent<ActivateCamButtons>().activateDoorButtons();
 
                 switchCam(Cameras[activeCameraNum]);
@@ -82,6 +87,8 @@ public class CameraContols : MonoBehaviour
                 activeCamera.SetActive(false);
                 CameraCanvas.SetActive(false);
                 Cameras[activeCameraNum].transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).GetChild(1).gameObject.SetActive(false);
+                Enemy.GetComponent<EnemyController>().speedFinal = Enemy.GetComponent<EnemyController>().speed;
+                Enemy.GetComponent<EnemyController>().chaseSpeedFinal = Enemy.GetComponent<EnemyController>().chasingSpeed;
             }
         }
 
