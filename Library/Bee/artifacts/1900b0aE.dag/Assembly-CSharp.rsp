@@ -340,6 +340,7 @@
 "Assets/Darkbringer Shader/Preview/Rotate.cs"
 "Assets/doorAudioScript.cs"
 "Assets/ModularFirstPersonController/FirstPersonController/FirstPersonController.cs"
+"Assets/MotionDetection.cs"
 "Assets/PSXShaderKit/Demo/PSXExample_CameraMovement.cs"
 "Assets/PSXShaderKit/Demo/SpookyOrbFloat.cs"
 "Assets/PSXShaderKit/Scripts/PSXPostProcessEffect.cs"

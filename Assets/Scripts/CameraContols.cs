@@ -30,7 +30,7 @@ public class CameraContols : MonoBehaviour
 
     public int maxLookAngle = 90;
 
-    bool camsOpen = false;
+    public bool camsOpen = false;
 
     public Color offColor = Color.red;
     public Color onColor = Color.green;
@@ -44,6 +44,7 @@ public class CameraContols : MonoBehaviour
     public GameObject Static;
 
     bool firstFrame = true;
+    public bool changeCamState = false;
 
     // Start is called before the first frame update
     void Start()
@@ -61,7 +62,7 @@ public class CameraContols : MonoBehaviour
         {
             FirstFrame();
         }
-        if (Input.GetKeyDown(openKey))
+        if (Input.GetKeyDown(openKey) || changeCamState)
         {
             if (!camsOpen)
             {
@@ -90,6 +91,7 @@ public class CameraContols : MonoBehaviour
                 Enemy.GetComponent<EnemyController>().speedFinal = Enemy.GetComponent<EnemyController>().speed;
                 Enemy.GetComponent<EnemyController>().chaseSpeedFinal = Enemy.GetComponent<EnemyController>().chasingSpeed;
             }
+            changeCamState = false;
         }
 
     }
@@ -157,5 +159,10 @@ public class CameraContols : MonoBehaviour
     {
         firstFrame = false;
         doorScript.hideAllCubes();
+    }
+
+    public void AudioLure()
+    {
+        Enemy.GetComponent<EnemyController>().navAgent.destination = activeCamera.transform.position;
     }
 }

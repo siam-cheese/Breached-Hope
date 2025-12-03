@@ -22,11 +22,17 @@ public class EnemyController : MonoBehaviour
     public GameObject chaseSoundObj;
     AudioSource chaseSound;
 
+    public GameObject StepSound;
+
 
     private RaycastHit hitInfo; 
 
+    public float NormalPitch;
 
-    UnityEngine.AI.NavMeshAgent navAgent;
+    public float ChasePitch;
+
+
+    public UnityEngine.AI.NavMeshAgent navAgent;
 
     void Start()
     {
@@ -60,6 +66,8 @@ public class EnemyController : MonoBehaviour
             Debug.DrawRay(ray.origin, ray.direction * rayMagnitude, Color.red);
             navAgent.speed = speedFinal;
             chaseSound.volume = Mathf.Lerp(chaseSound.volume, 0, .8f * Time.deltaTime);
+            StepSound.GetComponent<AudioSource>().pitch = NormalPitch;
+
         }
         else
         {
@@ -67,7 +75,7 @@ public class EnemyController : MonoBehaviour
             chaseSound.volume = Mathf.Lerp(chaseSound.volume, .5f, .8f * Time.deltaTime);
             navAgent.destination = playerPos;
             navAgent.speed = chaseSpeedFinal;
-
+            StepSound.GetComponent<AudioSource>().pitch = ChasePitch;
 
         }
     }

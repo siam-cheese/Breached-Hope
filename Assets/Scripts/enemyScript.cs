@@ -24,6 +24,8 @@ public class enemyScript : MonoBehaviour
         {
             jumpscareObj.GetComponent<AudioSource>().Play();
             Player.GetComponent<PlayerController>().frozen = true;
+            if (Player.GetComponent<CameraContols>().camsOpen)
+                Player.GetComponent<CameraContols>().changeCamState = true;
             Player.GetComponent<PlayerController>().lookAt(transform.position);
         }
     }

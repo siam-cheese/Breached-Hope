@@ -33,15 +33,19 @@ public class PointSystem : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        score++;
-        bool unacceptableSpawn = true;
-        int rInd = Random.Range(0, SpawnPoints.Count);
-        while (unacceptableSpawn)
+        if (other.gameObject.tag == "Player")
         {
-            rInd = Random.Range(0, SpawnPoints.Count);
-            unacceptableSpawn = (SpawnPoints[rInd].transform.position - transform.position).magnitude < 20;
+            score++;
+            bool unacceptableSpawn = true;
+            int rInd = Random.Range(0, SpawnPoints.Count);
+            while (unacceptableSpawn)
+            {
+                rInd = Random.Range(0, SpawnPoints.Count);
+                unacceptableSpawn = (SpawnPoints[rInd].transform.position - transform.position).magnitude < 20;
+            }
+            transform.position = SpawnPoints[rInd].transform.position;
+            pointAudio.GetComponent<AudioSource>().Play();
         }
-        transform.position = SpawnPoints[rInd].transform.position;
-        pointAudio.GetComponent<AudioSource>().Play();
+        
     }
 }
