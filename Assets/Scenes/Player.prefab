@@ -679,6 +679,7 @@ MonoBehaviour:
   Footsteps:
   - {fileID: 8300000, guid: 4eb24e23385b74446b644e02e582f0bc, type: 3}
   - {fileID: 8300000, guid: 4eb24e23385b74446b644e02e582f0bc, type: 3}
+  frozen: 0
 --- !u!1 &7425386306588713399
 GameObject:
   m_ObjectHideFlags: 0
@@ -2264,7 +2265,7 @@ Light:
   m_Color: {r: 1, g: 0.7628549, b: 0.504717, a: 1}
   m_Intensity: 9.41
   m_Range: 25.97
-  m_SpotAngle: 63.1
+  m_SpotAngle: 77.00014
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
